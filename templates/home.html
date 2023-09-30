@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <!-- Link to the Bulma CSS framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <!-- Custom CSS for background color -->
+    <style>
+        /* Customize background with gradient */
+        .hero.is-primary {
+            background: linear-gradient(to bottom, skyblue, lightblue, deepskyblue, navy);
+            padding: 20px; /* Add padding for better visual appearance */
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">
+                    Hey, How's The Weather?
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <form method="POST">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" name="city" type="text" placeholder="City Name">
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Add City
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    {% for weather in weather_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-64x64">
+                                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather Icon">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather.temperature }}° C</span>
+                                        <br> {{ weather.description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

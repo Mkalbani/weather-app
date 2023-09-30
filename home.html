@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forcasting System</title>
+</head>
+    <h1>Weather Forcasting System</h1>
+    <ul>
+        <li>{% for location in locations %} <a href="{{url_for('fetching_weather', location_id=location.id)}}">Fetch Weather</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Add Location</h2>
+    <form method="post" action="{{url_for('add_location')}}">
+        <input type="text" name="location_name" required placeholder="Enter location name">
+        <button type="submit">Add Location</button>
+    </form>
+<body>
+    
+</body>
+</html>
